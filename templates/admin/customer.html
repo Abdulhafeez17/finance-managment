@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Income Transactions
+{% endblock %}
+
+{% block main %}
+
+<div class="container mt-4">
+
+    <h2 class="text-center mb-4">Income Transactions</h2>
+
+    <table class="table table-bordered text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Customer</th>
+                <th>Employee</th>
+                <th>Amount</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for t in transactions %}
+            <tr>
+                <td>{{ t.id }}</td>
+                <td>{{ t.customer_name }}</td>
+                <td>{{ t.employee_name }}</td>
+                <td>₹{{ t.amount }}</td>
+                <td>{{ t.category }}</td>
+                <td>
+                    <span class="text-success">{{ t.status }}</span>
+                </td>
+                <td>{{ t.created_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+<div class="mb-3 text-end">
+    <a href="/admin/manage-customers" class="btn btn-primary">
+        Go to Manage Customers
+    </a>
+</div>
+
+{% endblock %}

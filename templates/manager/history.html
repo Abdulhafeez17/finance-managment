@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block title %}
+History
+{% endblock %}
+
+{% block main %}
+
+<h2>Manager History</h2>
+
+<div class="row">
+
+    <div class="col-md-3">
+        <div class="card p-3">
+            <h5>Approved</h5>
+            <h3>{{approvedCount }}</h3>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="card p-3">
+            <h5>Rejected</h5>
+            <h3>{{rejectedCount }}</h3>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card p-3">
+            <h5>Total Approved Expense</h5>
+            <h3>₹ {{totalExpense or 0 }}</h3>
+        </div>
+    </div>
+
+</div>
+<hr>
+<div class="container mt-4">
+
+    <h2 class="text-center mb-4">My Decisions</h2>
+
+    <table class="table table-bordered text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Employee</th>
+                <th>Type</th>
+                <th>Category</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for t in transactions %}
+            <tr>
+                <td>{{ t.id }}</td>
+                <td>{{ t.employee_name }}</td>
+                <td>{{ t.type }}</td>
+                <td>{{ t.category }}</td>
+                <td>₹{{ t.amount }}</td>
+
+                <td>
+                    {% if t.status == "approved" %}
+                        <span class="text-success">Approved</span>
+                    {% else %}
+                        <span class="text-danger">Rejected</span>
+                    {% endif %}
+                </td>
+
+                <td>{{ t.created_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock %}

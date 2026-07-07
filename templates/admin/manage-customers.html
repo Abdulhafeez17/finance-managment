@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Add Customer
+{% endblock %}
+
+{% block main %}
+<div class="container mt-4">
+    <h2>Add Customer</h2>
+
+    <form action="/create-customer" method="POST">
+        <div class="mb-3">
+            <label>Name</label>
+            <input type="text" name="name" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label>Phone</label>
+            <input type="text" name="phone" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Customer</button>
+    </form>
+
+   
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: darkred;
+        }
+    </style>
+
+   
+    <h2>Customers List</h2>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Action</th>
+        </tr>
+
+        {% for customer in customers %}
+        <tr>
+            <td>{{ customer.id }}</td>
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.phone }}</td>
+
+            <td>
+                <form action="/delete-customer" method="POST">
+                    <input type="hidden" name="customer_id" value="{{ customer.id }}">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+{% endblock %}

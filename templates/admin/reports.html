@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Reports
+{% endblock %}
+
+{% block main %}
+
+<div class="container mt-4">
+
+    <h2 class="text-center mb-4">Financial Report</h2>
+
+    <div class="row text-center">
+
+        <div class="col-md-4">
+            <div class="card bg-success text-white p-4">
+                <h5>Total Income</h5>
+                <h2>₹{{ totalIncome }}</h2>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card bg-danger text-white p-4">
+                <h5>Total Expense</h5>
+                <h2>₹{{ totalExpense }}</h2>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card bg-primary text-white p-4">
+                <h5>Net Savings</h5>
+                <h2>₹{{ netSavings }}</h2>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="mt-5">
+
+        <h4 class="text-center mb-3">Employee Expense Overview</h4>
+
+        <div class="card p-3">
+
+            <table class="table table-bordered text-center">
+
+                <thead class="table-dark">
+                    <tr>
+                        <th>Employee Name</th>
+                        <th>Total Expense</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% set max_expense = employees | map(attribute='expense') | max %}
+
+                    {% for emp in employees %}
+                    <tr>
+                        <td>{{ emp.name }}</td>
+                        <td>₹{{ emp.expense }}</td>
+                        <td>
+                            {% if emp.expense == max_expense %}
+                                <span class="badge bg-danger">Highest Expense</span>
+                            {% else %}
+                                <span class="badge bg-success">Normal</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

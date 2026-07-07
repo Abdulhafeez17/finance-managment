@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Manager Dashboard
+{% endblock %}
+
+{% block main %}
+
+<div class="container mt-4">
+
+    <h2 class="mb-3 text-center">Pending Expenses</h2>
+
+    <table class="table table-bordered text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>User</th>
+                <th>Category</th>
+                <th>Amount</th>
+                <th>Description</th>
+                <th>Proof</th>
+                <th>Action</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for transaction in transactions %}
+            <tr>
+                <td>{{ transaction.id }}</td>
+                <td>{{ transaction.user_name }}</td>
+                <td>{{ transaction.category }}</td>
+                <td>₹{{ transaction.amount }}</td>
+                <td>{{ transaction.description }}</td>
+
+                
+                <td>
+                    {% if transaction.proof %}
+                        <a href="{{ url_for('static', filename='uploads/' + transaction.proof) }}" target="_blank">View</a>
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+
+               
+                <td>
+                    <form method="POST" action="/manager/action" style="display:inline;">
+                        <input type="hidden" name="transaction_id" value="{{ transaction.id }}">
+                        <input type="hidden" name="action" value="approve">
+                        <button class="btn btn-success btn-sm">Approve</button>
+                    </form>
+
+                    <form method="POST" action="/manager/action" style="display:inline;">
+                        <input type="hidden" name="transaction_id" value="{{ transaction.id }}">
+                        <input type="hidden" name="action" value="reject">
+                        <button class="btn btn-danger btn-sm">Reject</button>
+                    </form>
+                </td>
+                <td>{{transaction.created_at}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock %}

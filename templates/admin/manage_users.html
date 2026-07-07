@@ -1,0 +1,248 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Manage Users
+{% endblock %}
+
+{% block main %}
+
+<div class="container mt-4">
+
+    <h2>Create User</h2>
+
+    <form action="/create-user" method="POST">
+
+        <label>User Name</label>
+        <input type="text" name="name" required>
+
+        <label>Email</label>
+        <input type="email" name="email" required>
+
+        <label>Password</label>
+        <input type="password" name="password" required>
+
+        <label class="form-label">Role</label>
+        <select name="role" id="role" class="form-control" required onchange="toggleManager()">
+            <option value="">-- Select Role --</option>
+            <option value="employee">Employee</option>
+            <option value="manager">Manager</option>
+
+        </select>
+
+        <!-- Manager Dropdown -->
+        <div id="managerField" style="display:none;">
+            <label>Select Manager</label>
+            <select name="manager_id" class="form-control">
+                <option value="">-- Select Manager --</option>
+                {% for manager in managers %}
+                <option value="{{ manager.id }}">{{ manager.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit">Create</button>
+    </form>
+
+    <hr>
+
+    <h2>Users List</h2>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Manager</th>
+            <th>Action</th>
+        </tr>
+
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role }}</td>
+            <td>{{ user.manager_name if user.manager_name else "—" }}</td>
+
+            <td> {% if user.role == 'manager' %} 
+                <button type="button" data-bs-toggle="modal" data-bs-target="#reassignModal" 
+                data-id="{{ user.id }}" onclick="setManagerId(this)"> 
+                Delete (Reassign) </button> 
+                {% endif %} 
+                <form action="/delete-user" method="POST" style="display:inline;"> 
+                    <input type="hidden" name="user_id" value="{{ user.id }}"> 
+                    <button type="submit">Delete</button> 
+                </form> 
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+
+<div class="modal fade" id="reassignModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Reassign Employees</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+           <form action="{{ url_for('reassign_delete_manager') }}" method="POST">
+                <div class="modal-body">
+
+                    <input type="hidden" name="old_manager_id" id="oldManagerId">
+
+                    <p>This manager has employees. Select a new manager.</p>
+
+                    <label>Select New Manager</label>
+                    <select name="new_manager_id" required>
+                        <option value="">-- Select Manager --</option>
+                        {% for manager in managers %}
+                        <option value="{{ manager.id }}">{{ manager.name }}</option>
+                        {% endfor %}
+                    </select>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit">Reassign & Delete</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        font-family: Arial, sans-serif;
+    }
+
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background-color: #fafafa;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    button {
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    button:hover {
+        background-color: darkred;
+    }
+
+
+    form[action="/create-user"] {
+        background-color: #fafafa;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        max-width: 700px;
+
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    label {
+        display: block;
+        width: 48%;
+        margin-top: 5px;
+        font-weight: bold;
+    }
+
+    /* Inputs & Select */
+    input,
+    select {
+        width: 48%;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+        background-color: white;
+    }
+
+
+    input:focus,
+    select:focus {
+        outline: none;
+        border-color: #999;
+        background-color: #f9f9f9;
+    }
+
+
+    #managerField {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    form[action="/create-user"] button {
+        width: 100%;
+        margin-top: 15px;
+    }
+
+
+    hr {
+        margin: 25px 0;
+    }
+
+    h2 {
+        margin-bottom: 10px;
+    }
+</style>
+
+<!-- Toggle Script -->
+<script>
+    function toggleManager() {
+        let role = document.getElementById("role").value;
+        let managerField = document.getElementById("managerField");
+        let managerSelect = document.querySelector("select[name='manager_id']");
+
+        if (role === "employee") {
+            managerField.style.display = "block";
+        } else {
+            managerField.style.display = "none";
+            managerSelect.value = "";
+        }
+    }
+
+     function setManagerId(btn) {
+        const id = btn.getAttribute("data-id");  // ✅ get correct id
+        document.getElementById("oldManagerId").value = id;
+    }
+
+    // Optional: debug before form submit
+    function debugManagerId() {
+        console.log("Old Manager ID:", document.getElementById("oldManagerId").value);
+    }
+</script>
+
+{% endblock %}

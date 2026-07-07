@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block main %}
+
+<div class="container mt-4">
+
+    <h2 class="mb-3 text-center">All Transactions</h2>
+    <form method="get" class="row mb-3">
+
+        <div class="col-md-4">
+            <input type="text" name="search" class="form-control"
+                   placeholder="Search category or description"
+                   value="{{ search }}">
+        </div>
+
+        <div class="col-md-3">
+            <select name="type" class="form-select">
+                <option value="">All Types</option>
+                <option value="income" {% if type == "income" %}selected{% endif %}>Income</option>
+                <option value="expense" {% if type == "expense" %}selected{% endif %}>Expense</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <select name="status" class="form-select">
+                <option value="">All Types</option>
+                <option value="approved" {% if type == "approved" %}selected{% endif %}>Approved</option>
+                <option value="pending" {% if type == "pending" %}selected{% endif %}>Pending</option>
+                <option value="retected" {% if type == "retected" %}selected{% endif %}>Rejected</option>
+                 
+            </select>
+        </div>
+
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary w-100">Filter</button>
+        </div>
+
+    </form>
+
+    <table class="table table-bordered table-striped text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>User Name</th>
+                <th>Email</th>
+                <th>Manager Name</th>
+                <th>Type</th>
+                <th>Category</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Proof</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for transaction in transactions %}
+            <tr>
+                <td>{{ transaction.id }}</td>
+                <td>{{transaction.user_name}}</td>
+                <td>{{ transaction.user_email }}</td>
+                <td>{{transaction.manager_name}}</td>
+                <td>{{ transaction.type }}</td>
+                <td>{{ transaction.category }}</td>
+                <td>₹{{ transaction.amount }}</td>
+
+               
+                <td>
+                    {% if transaction.status == "approved" %}
+                        <span class="badge bg-success">Approved</span>
+                    {% elif transaction.status == "pending" %}
+                        <span class="badge bg-warning text-dark">Pending</span>
+                    {% else %}
+                        <span class="badge bg-danger">Rejected</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if transaction.proof %}
+                        <a href="{{ url_for('static', filename='uploads/' + transaction.proof) }}" target="_blank" class="btn btn-sm btn-primary">
+                            View
+                        </a>
+                    {% else %}
+                        No File
+                    {% endif %}
+                </td>
+
+                <td>{{ transaction.created_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-center mt-4">
+
+    {% if page > 1 %}
+        <a href="?page={{ page-1 }}&search={{ search }}&type={{ type }}&status={{ status }}"
+           class="btn btn-outline-primary me-2">Previous</a>
+    {% endif %}
+
+    <span class="btn btn-light">Page {{ page }}</span>
+
+     {% if has_next %}
+        <a href="?page={{ page+1 }}&search={{ search }}&type={{ type }}"
+        class="btn btn-outline-primary me-2">Next</a>
+        {% endif %}
+
+</div>
+</div>
+
+{% endblock %}

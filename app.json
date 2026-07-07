@@ -1,0 +1,92 @@
+{"time": "2026-04-21T14:26:22.178611", "level": "INFO", "message": "User logged out", "user_id": 12}
+{"time": "2026-04-21T14:26:34.552183", "level": "INFO", "message": "Login success", "user_id": 12, "role": "admin"}
+{"time": "2026-04-21T14:28:52.724060", "level": "INFO", "message": "User logged out", "user_id": 12}
+{"time": "2026-04-21T14:29:49.005331", "level": "INFO", "message": "Login success", "user_id": 15, "role": "employee"}
+{"time": "2026-04-21T14:31:25.125361", "level": "INFO", "message": "User logged out", "user_id": 15}
+{"time": "2026-04-21T14:31:49.109064", "level": "INFO", "message": "Login success", "user_id": 12, "role": "admin"}
+{"time": "2026-04-21T14:32:56.442153", "level": "INFO", "message": "User logged out", "user_id": 12}
+{"time": "2026-04-21T14:33:04.695170", "level": "WARNING", "message": "Login failed", "email": "admin@dbvnkajvdnv"}
+{"time": "2026-04-21T14:33:20.827757", "level": "INFO", "message": "Login success", "user_id": 12, "role": "admin"}
+{"time": "2026-04-23T13:15:17.646260", "level": "INFO", "message": "User logged out", "user_id": 12}
+{"time": "2026-04-23T13:15:57.626621", "level": "ERROR", "message": "Exception on /login [POST]"}
+{"time": "2026-04-23T13:16:06.756350", "level": "ERROR", "message": "Exception on /admin/dashboard [GET]"}
+{"time": "2026-04-23T13:16:09.470692", "level": "ERROR", "message": "Exception on /admin/reports [GET]"}
+{"time": "2026-04-23T13:19:21.915372", "level": "ERROR", "message": "Exception on / [GET]"}
+{"time": "2026-04-23T13:44:45.513571", "level": "ERROR", "message": "Exception on /login [POST]"}
+{"time": "2026-04-23T13:55:56.451078", "level": "INFO", "message": "Login success", "user_id": 1, "role": "admin"}
+{"time": "2026-04-23T13:59:07.785753", "level": "INFO", "message": "User logged out", "user_id": 1}
+{"time": "2026-04-23T13:59:30.192632", "level": "INFO", "message": "Login success", "user_id": 4, "role": "employee"}
+{"time": "2026-07-06T10:08:45.647298", "level": "INFO", "message": "Login success", "user_id": 4, "role": "employee"}
+{"time": "2026-07-06T10:09:23.818136", "level": "INFO", "message": "User logged out", "user_id": 4}
+{"time": "2026-07-06T10:09:54.583222", "level": "INFO", "message": "Login success", "user_id": 5, "role": "employee"}
+{"time": "2026-07-06T10:10:13.397115", "level": "INFO", "message": "Transaction created", "user_id": 5, "amount": "9000", "type": "expense", "status": "pending"}
+{"time": "2026-07-06T10:10:17.587563", "level": "INFO", "message": "User logged out", "user_id": 5}
+{"time": "2026-07-06T10:10:34.891736", "level": "INFO", "message": "Login success", "user_id": 3, "role": "manager"}
+{"time": "2026-07-06T10:10:38.488375", "level": "INFO", "message": "Manager action", "manager_id": 3, "transaction_id": "1", "action": "approved"}
+{"time": "2026-07-06T10:11:51.417598", "level": "INFO", "message": "User logged out", "user_id": 3}
+{"time": "2026-07-06T10:12:19.587849", "level": "INFO", "message": "Login success", "user_id": 1, "role": "admin"}
+{"time": "2026-07-06T10:12:28.592384", "level": "ERROR", "message": "Exception on /admin/customer [GET]"}
+{"time": "2026-07-06T10:12:31.686718", "level": "ERROR", "message": "Exception on /admin/customer [GET]"}
+{"time": "2026-07-06T10:12:40.437055", "level": "ERROR", "message": "Exception on /admin/customer [GET]"}
+{"time": "2026-07-06T10:12:42.648679", "level": "ERROR", "message": "Exception on /admin/customer [GET]"}
+{"time": "2026-07-06T10:13:42.590516", "level": "ERROR", "message": "Exception on /admin/customer [GET]"}
+{"time": "2026-07-06T10:13:44.515572", "level": "ERROR", "message": "Exception on /admin/customer [GET]"}
+{"time": "2026-07-06T10:14:22.688322", "level": "ERROR", "message": "Exception on /admin/customer [GET]"}
+{"time": "2026-07-06T10:16:08.539072", "level": "INFO", "message": "User logged out", "user_id": 1}
+{"time": "2026-07-06T10:16:43.418259", "level": "INFO", "message": "Login success", "user_id": 3, "role": "manager"}
+{"time": "2026-07-06T10:20:20.131201", "level": "INFO", "message": "User logged out", "user_id": 3}
+{"time": "2026-07-06T10:20:43.231606", "level": "INFO", "message": "Login success", "user_id": 5, "role": "employee"}
+{"time": "2026-07-06T10:21:09.054358", "level": "INFO", "message": "Transaction created", "user_id": 5, "amount": "999", "type": "expense", "status": "pending"}
+{"time": "2026-07-06T10:21:18.118107", "level": "INFO", "message": "User logged out", "user_id": 5}
+{"time": "2026-07-06T10:21:43.147844", "level": "INFO", "message": "Login success", "user_id": 3, "role": "manager"}
+{"time": "2026-07-06T10:22:49.002016", "level": "INFO", "message": "Manager action", "manager_id": 3, "transaction_id": "2", "action": "rejected"}
+{"time": "2026-07-06T10:25:37.364898", "level": "INFO", "message": "User logged out", "user_id": 3}
+{"time": "2026-07-06T10:26:42.622597", "level": "INFO", "message": "Login success", "user_id": 5, "role": "employee"}
+{"time": "2026-07-06T10:26:54.702312", "level": "INFO", "message": "Transaction created", "user_id": 5, "amount": "444", "type": "expense", "status": "pending"}
+{"time": "2026-07-06T10:27:09.919660", "level": "INFO", "message": "Transaction created", "user_id": 5, "amount": "123", "type": "expense", "status": "pending"}
+{"time": "2026-07-06T10:27:13.455278", "level": "INFO", "message": "User logged out", "user_id": 5}
+{"time": "2026-07-06T10:27:30.437000", "level": "INFO", "message": "Login success", "user_id": 3, "role": "manager"}
+{"time": "2026-07-06T10:27:35.107794", "level": "INFO", "message": "Manager action", "manager_id": 3, "transaction_id": "4", "action": "approved"}
+{"time": "2026-07-06T10:27:36.426135", "level": "INFO", "message": "Manager action", "manager_id": 3, "transaction_id": "3", "action": "approved"}
+{"time": "2026-07-06T10:27:45.031957", "level": "INFO", "message": "User logged out", "user_id": 3}
+{"time": "2026-07-06T10:28:06.109112", "level": "INFO", "message": "Login success", "user_id": 1, "role": "admin"}
+{"time": "2026-07-06T10:28:47.744772", "level": "INFO", "message": "Manager reassigned", "old_manager": "2", "new_manager": "3"}
+{"time": "2026-07-06T10:29:05.189746", "level": "ERROR", "message": "Exception on /admin/customer [GET]"}
+{"time": "2026-07-06T10:29:30.832761", "level": "INFO", "message": "User logged out", "user_id": 1}
+{"time": "2026-07-06T10:29:51.740285", "level": "INFO", "message": "User logged out", "user_id": null}
+{"time": "2026-07-06T13:00:07.390030", "level": "INFO", "message": "Login success", "user_id": 1, "role": "admin"}
+{"time": "2026-07-06T13:00:13.375559", "level": "INFO", "message": "User logged out", "user_id": 1}
+{"time": "2026-07-06T13:01:27.919808", "level": "INFO", "message": "Login success", "user_id": 1, "role": "admin"}
+{"time": "2026-07-06T13:01:36.651410", "level": "INFO", "message": "User logged out", "user_id": 1}
+{"time": "2026-07-06T13:02:07.469801", "level": "INFO", "message": "Login success", "user_id": 5, "role": "employee"}
+{"time": "2026-07-06T13:02:18.664785", "level": "INFO", "message": "Transaction created", "user_id": 5, "amount": "456", "type": "expense", "status": "pending"}
+{"time": "2026-07-06T13:02:20.760581", "level": "INFO", "message": "User logged out", "user_id": 5}
+{"time": "2026-07-06T13:02:35.780921", "level": "INFO", "message": "Login success", "user_id": 1, "role": "admin"}
+{"time": "2026-07-06T13:04:45.507794", "level": "ERROR", "message": "Exception on /admin/customer [GET]"}
+{"time": "2026-07-06T13:07:44.705442", "level": "ERROR", "message": "Exception on /admin/customer [GET]"}
+{"time": "2026-07-06T13:08:13.731483", "level": "ERROR", "message": "Exception on /admin/customer [GET]"}
+{"time": "2026-07-06T13:08:14.352368", "level": "ERROR", "message": "Exception on /admin/customer [GET]"}
+{"time": "2026-07-06T13:08:14.552596", "level": "ERROR", "message": "Exception on /admin/customer [GET]"}
+{"time": "2026-07-06T13:08:14.710358", "level": "ERROR", "message": "Exception on /admin/customer [GET]"}
+{"time": "2026-07-06T13:08:14.904148", "level": "ERROR", "message": "Exception on /admin/customer [GET]"}
+{"time": "2026-07-06T13:08:18.727098", "level": "ERROR", "message": "Exception on /admin/customer [GET]"}
+{"time": "2026-07-06T13:08:21.245671", "level": "ERROR", "message": "Exception on /admin/customer [GET]"}
+{"time": "2026-07-06T13:11:23.126815", "level": "ERROR", "message": "Exception on /admin/manage-customers [GET]"}
+{"time": "2026-07-06T13:20:40.773660", "level": "ERROR", "message": "Exception on /admin/customer [GET]"}
+{"time": "2026-07-06T13:21:23.975689", "level": "ERROR", "message": "Exception on /admin/customer [GET]"}
+{"time": "2026-07-06T13:21:24.792749", "level": "ERROR", "message": "Exception on /admin/customer [GET]"}
+{"time": "2026-07-06T13:21:26.179005", "level": "ERROR", "message": "Exception on /admin/customer [GET]"}
+{"time": "2026-07-06T13:21:29.403092", "level": "ERROR", "message": "Exception on /admin/customer [GET]"}
+{"time": "2026-07-06T13:23:01.494886", "level": "ERROR", "message": "Exception on /admin/manage-customers [GET]"}
+{"time": "2026-07-06T13:23:04.478052", "level": "ERROR", "message": "Exception on /admin/manage-customers [GET]"}
+{"time": "2026-07-06T13:28:16.725135", "level": "ERROR", "message": "Exception on /admin/customer [GET]"}
+{"time": "2026-07-06T13:29:32.958689", "level": "ERROR", "message": "Exception on /admin/manage-customers [GET]"}
+{"time": "2026-07-06T13:29:35.188809", "level": "ERROR", "message": "Exception on /admin/manage-customers [GET]"}
+{"time": "2026-07-06T13:30:00.400141", "level": "ERROR", "message": "Exception on /admin/manage-customers [GET]"}
+{"time": "2026-07-06T13:30:02.407138", "level": "ERROR", "message": "Exception on /admin/manage-customers [GET]"}
+{"time": "2026-07-06T13:30:59.366274", "level": "INFO", "message": "User logged out", "user_id": 1}
+{"time": "2026-07-06T13:31:12.700359", "level": "WARNING", "message": "Login failed", "email": "raze@test.com"}
+{"time": "2026-07-06T13:31:34.057711", "level": "INFO", "message": "Login success", "user_id": 5, "role": "employee"}
+{"time": "2026-07-06T13:31:51.067413", "level": "INFO", "message": "Transaction created", "user_id": 5, "amount": "50000", "type": "income", "status": "approved"}
+{"time": "2026-07-06T13:31:54.426417", "level": "INFO", "message": "User logged out", "user_id": 5}
+{"time": "2026-07-06T13:32:07.842523", "level": "INFO", "message": "Login success", "user_id": 1, "role": "admin"}

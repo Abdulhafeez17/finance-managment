@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block main %}
+
+<h2>Welcome to Finance Management System</h2>
+<p>Manage your company finances with ease.</p>
+
+<hr>
+
+{% if session.get("user_id") %}
+
+    <h5>Hello, {{ session.get("user_name") }} 👋</h5>
+
+    <!-- {% if session.get("role") == "employee" %}
+        <p>You can create and track your expenses.</p>
+        <a href="/employee/dashboard" class="btn btn-primary">Go to Dashboard</a>
+    {% elif session.get("role") == "manager" %}
+        <p>Review and approve pending expenses.</p>
+        <a href="/manager/dashboard" class="btn btn-primary">Go to Dashboard</a>
+    {% elif session.get("role") == "admin" %}
+        <p>View reports and manage users.</p>
+        <a href="/admin/dashboard" class="btn btn-primary">Go to Dashboard</a>
+    {% endif %} -->
+
+{% else %}
+
+    <p>Please login to access the system.</p>
+    <a href="/login" class="btn btn-success">Login</a>
+
+{% endif %}
+
+{% endblock %}

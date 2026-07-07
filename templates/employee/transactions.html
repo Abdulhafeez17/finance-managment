@@ -1,0 +1,110 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Transactions
+{% endblock %}
+
+{% block main %}
+
+<div class="container mt-4">
+
+    <h2 class="mb-3 text-center">All Transactions</h2>
+
+    
+    <form method="get" class="row mb-3">
+
+        <div class="col-md-4">
+            <input type="text" name="search" class="form-control"
+                   placeholder="Search category or description"
+                   value="{{ search }}">
+        </div>
+
+        <div class="col-md-3">
+            <select name="type" class="form-select">
+                <option value="">All Types</option>
+                <option value="income" {% if type == "income" %}selected{% endif %}>Income</option>
+                <option value="expense" {% if type == "expense" %}selected{% endif %}>Expense</option>
+            </select>
+        </div>
+
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary w-100">Filter</button>
+        </div>
+
+    </form>
+
+   
+    <table class="table table-bordered table-striped text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Type</th>
+                <th>Category</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for transaction in transactions %}
+            <tr>
+                <td>{{ transaction.id }}</td>
+                <td>{{ transaction.email }}</td>
+
+                <!-- TYPE BADGE -->
+                <td>
+                    {% if transaction.type == "income" %}
+                        <span class="badge bg-success">Income</span>
+                    {% else %}
+                        <span class="badge bg-danger">Expense</span>
+                    {% endif %}
+                </td>
+
+                <td>{{ transaction.category }}</td>
+                <td>₹{{ transaction.amount }}</td>
+
+                
+                <td>
+                    {% if transaction.status == "approved" %}
+                        <span class="badge bg-success">Approved</span>
+                    {% elif transaction.status == "pending" %}
+                        <span class="badge bg-warning text-dark">Pending</span>
+                    {% else %}
+                        <span class="badge bg-danger">Rejected</span>
+                    {% endif %}
+                </td>
+
+                <td>{{ transaction.created_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    
+    <div class="d-flex justify-content-center mt-4">
+
+        {% if page > 1 %}
+            <a href="?page={{ page-1 }}&search={{ search }}&type={{ type }}" 
+               class="btn btn-outline-primary me-2">Previous</a>
+        {% endif %}
+
+        <span class="btn btn-light">Page {{ page }}</span>
+     
+
+        {% if has_next %}
+        <a href="?page={{ page+1 }}&search={{ search }}&type={{ type }}"
+        class="btn btn-outline-primary me-2">Next</a>
+        {% endif %}
+
+    </div>
+
+  
+    <div class="text-center mt-3">
+        <a href="/employee/dashboard" class="btn btn-secondary">Back to Dashboard</a>
+    </div>
+
+</div>
+
+{% endblock %}
