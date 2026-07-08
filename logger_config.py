@@ -2,6 +2,7 @@ import logging
 import json
 from datetime import datetime
 
+
 class JSONFormatter(logging.Formatter):
     def format(self, record):
         log_record = {
@@ -17,12 +18,16 @@ class JSONFormatter(logging.Formatter):
 
 
 def setup_logger(app):
-    handler = logging.FileHandler("app.json")
+    # Log to stdout (works on Vercel)
+    handler = logging.StreamHandler()
 
     formatter = JSONFormatter()
     handler.setFormatter(formatter)
 
     handler.setLevel(logging.INFO)
+
+    # Avoid duplicate log entries
+    app.logger.handlers.clear()
 
     app.logger.addHandler(handler)
     app.logger.setLevel(logging.INFO)
